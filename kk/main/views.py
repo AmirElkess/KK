@@ -39,7 +39,7 @@ def specificArticle(request, slug,id):
     cat= slug
     ID = id
     topic = get_object_or_404(Topic,id = id) 
-    comments = get_list_or_404(Comment , onArticle = topic)
+    # comments = get_list_or_404(Comment , onArticle = topic)
     form = NewComment()
     if request.method == 'POST':
         form = NewComment(request.POST)
@@ -49,7 +49,7 @@ def specificArticle(request, slug,id):
             comment.onArticle = topic
             comment.save()
             return redirect(specificArticle,slug = cat, id = ID)  # TODO: redirect to the created topic page
-    return render(request, 'main/single.html',{'topic': topic, 'form':form, 'Comments':comments})
+    return render(request, 'main/single.html',{'topic': topic, 'form':form,})
 
 
 def land(request):
