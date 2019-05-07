@@ -5,11 +5,11 @@ from django.contrib.auth.models import User
 
 class Topic(models.Model):
     Author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='topics')
-    Title = models.CharField(max_length=200)
+    Title = models.CharField(max_length=200,unique = True)
     Body = models.TextField()
     positiveVotes = models.IntegerField(default=0)
     negativeVotes = models.IntegerField(default=0)
-    # videoLink = models.URLField(max_length=400)
+    videoLink = models.URLField(max_length=400, blank = True)
     Category = models.CharField(
         max_length = 3,
         choices = ( ("phy", "Physics"),

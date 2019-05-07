@@ -17,13 +17,11 @@ from django.contrib import admin
 from django.urls import path,include,re_path
 from django.conf.urls import url
 from django.contrib.auth import views as auth_views
-
+from accounts import views as accounts_views
 
 
 urlpatterns = [
-    path('', include('main.urls')),
-    path('main/<int:id>', include('main.urls')),
-    path('new/',include('main.urls')),
-    path('help/',include('main.urls')),
-    path('admin/', admin.site.urls),
+    path('main/', include('main.urls')),
+    path('signup/', accounts_views.signup, name = 'signup'),
+    url('admin/', admin.site.urls),
 ]

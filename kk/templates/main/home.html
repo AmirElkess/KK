@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}
+  test
+{% endblock %}
+{% block breadcrumb %}
+{% if topics_list%}
+    {%for topic in topics_list%}
+        <!-- <h1 class="alert alert-success" role="alert"> -->
+          <a href = {{topic.Category}}/{{topic.id}}>{{topic.Title}}</a> 
+          <br>
+          {{topic.Body}}
+          <br><br>
+          {{topic.Category}}
+          <br><br>
+        <!-- </h1> -->
+        <!-- <h5 class="alert alert-secondary"> {{topic.Body}}    </h5> -->
+        <!-- <h5 class="alert alert-secondary">{{topic.Category}}</h5> -->
+        
+    {%endfor%}
+{%endif%}
+{% endblock %}
+</html>

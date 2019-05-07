@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}
+  test
+{% endblock %}
+{% block breadcrumb %}
+{% if topic%}
+        <h1 class="alert alert-success" role="alert">{{ topic.Title}}</h1>
+        <h5 class="alert alert-secondary">{{topic.Body}}    </h5>
+        <h5 class="alert alert-secondary">{{topic.Author}}</h5>
+{%endif%}
+{%endblock %}
+{% block content %}
+    {% if Comments %}
+        {% for comment in Comments %}
+            {{comment.Author}}<br>
+            {{comment.Body}}<br>
+            {{comment.timeStamp}}<br>
+        {%endfor%}
+    {%endif%}
+<form method="post" novalidate>
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" class="btn btn-success">Add Comment</button>
+  </form>
+  {% endblock %}
+
+</html>
