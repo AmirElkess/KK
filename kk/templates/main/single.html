@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
 {%block navbar%}
   Categories
 {%endblock%}
@@ -42,7 +43,7 @@
 {% if user.is_authenticated %}
 <form method="post" novalidate style="background-color:aliceblue ; padding: 20px ; padding-bottom:50px">
     {% csrf_token %}
-    {{form.as_p}}
+    {% render_field form.Body class="" style="background-color:red;" %}
     <button type="submit" class="btn btn-success">Add Comment</button>
 </form>
 {% else %}
