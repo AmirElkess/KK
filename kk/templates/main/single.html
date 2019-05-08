@@ -1,24 +1,56 @@
 {% extends 'base.html' %}
+{%block navbar%}
+  Categories
+{%endblock%}
 {% block breadcrumb %}
 {% if topic%}
-        <h1 class="alert alert-success" role="alert">{{ topic.Title}}</h1>
-        <h5 class="alert alert-secondary">{{topic.Body}} </h5>
-        <h5 class="alert alert-secondary">{{topic.Author}}</h5>
+<div class="jumbotron">
+    <h1 class="display-4">{{topic.Title}}</h1>
+    <p class="lead">{{topic.Body}}</p>
+
+    <ul style="list-style:none ; margin: 0px; padding: 0px">
+        <li style="display:inline-block; padding-right: 20px"><h4>Topic : <a class="btn btn-secondary btn-sm" href={{topic.Category}} role="button">{{topic.Category}}</a></h4></li>
+        <li style="display:inline-block"><h4>Author : <a class="btn btn-secondary btn-sm" href={{topic.Author}} role="button">{{topic.Author}}</a></h4></li>
+    </ul>
+
+</div>
+<!--{{comment.Author}}<br>
+{{comment.Body}}<br>
+{{comment.timeStamp}}<br>-->
 {%endif%}
 {%endblock %}
 {% block content %}
     {% if Comments %}
         {% for comment in Comments %}
-            {{comment.Author}}<br>
-            {{comment.Body}}<br>
-            {{comment.timeStamp}}<br>
+
+<div class="media" style="background-color:aliceblue ; padding: 10px">
+    <img src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="mr-3" alt="{{comment.Author}}" width="64px" height="64px">
+    <div class="media-body">
+        <h5 class="mt-0" style="color:#fd7e14"><bold>{{comment.Author}}</bold></h5>
+        <p>{{comment.Body}} </p>
+
+        <small>{{comment.timeStamp}}</small>
+        <hr class="my-4">
+    </div>
+</div>
+
+
         {%endfor%}
     {%endif%}
-<form method="post" novalidate>
+<br />
+
+{% if user.is_authenticated %}
+<form method="post" novalidate style="background-color:aliceblue ; padding: 20px ; padding-bottom:50px">
     {% csrf_token %}
     {{form.as_p}}
     <button type="submit" class="btn btn-success">Add Comment</button>
-  </form>
+</form>
+{% else %}
+<div style="padding-bottom: 50px ; background-color:aliceblue; padding: 20px">
+    <p>You must <a href="{%url 'login' %}" style="color:#fd7e14">Login</a> or <a href="{%url 'signup' %}" style="color:#fd7e14">Sign Up</a> before you can add a new comment</p>
+</div>
+{% endif %}
+
   {% endblock %}
 
 </html>
