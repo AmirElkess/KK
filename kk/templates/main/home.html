@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 {% block title %}
-  test
+  Knowledge Khana
 {% endblock %}
+{%block navbar%}
+  Categories
+{%endblock%}
 {% block breadcrumb %}
 {% if topics_list%}
     {%for topic in topics_list%}
@@ -19,4 +22,4 @@
     {%endfor%}
 {%endif%}
 {% endblock %}
-</html>
+

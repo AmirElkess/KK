@@ -5,10 +5,12 @@ from .models import Topic,Comment
 from django.contrib.auth import login as auth_login
 from .forms import NewTopicForm, NewComment
 from django.contrib.auth.models import User
+from django.contrib.auth import get_user
 
 
 def new_topic(request):
-    user = User.objects.first()  # TODO: get the currently logged in user
+    user = get_user(request)   # TODO: get the currently logged in user
+    print(user)
     if request.method == 'POST':
         form = NewTopicForm(request.POST)
         if form.is_valid():

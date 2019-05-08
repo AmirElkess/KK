@@ -31,7 +31,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-header">Dropdown header</a>
-          <a class="dropdown-item" href="home">Browse Topics</a>
+          <a class="dropdown-item" href="{%url 'home'%}">Browse Topics</a>
           <a class="dropdown-item" href="#">Share</a>
           <a class="dropdown-item" href="#">About Us</a>
           <div class="dropdown-divider"></div>
@@ -50,18 +50,21 @@
       </div>
       <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="url('{%static 'img/blurred-image-1.jpg' %}')">
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Have an issue?</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="profile-page.html">Profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="#" target="_blank">
-              <i class="fab fa-twitter"></i>
-              <p class="d-lg-none d-xl-none">Twitter</p>
-            </a>
-          </li>
+          {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{%url 'new'%}">Create New Article!</a>
+                  </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="profile-page.html">{{ user.username }}</a>
+              </li>
+              <li>
+                  <a class="nav-link" href="{%url 'logout' %}">Log Out</a>
+              </li>
+                {% else %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{%url 'login' %}">login</a>
+               </li>
+                {% endif %}
           <li class="nav-item">
             <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="#" target="_blank">
               <i class="fab fa-facebook-square"></i>
@@ -192,17 +195,12 @@
           <ul>
             <li>
               <a href="{% url 'home'%}">
-                Home
+                Signup
               </a>
             </li>
             <li>
-              <a href="http://p...content-available-to-author-only...m.com">
-                About Us
-              </a>
-            </li>
-            <li>
-              <a href="http://b...content-available-to-author-only...m.com">
-                Blog
+              <a href="{%url 'login'%}">
+                login 
               </a>
             </li>
           </ul>

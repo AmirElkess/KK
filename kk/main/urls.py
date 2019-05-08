@@ -7,7 +7,8 @@ urlpatterns = [
     path('home', views.home, name='home'),
     path('new',views.new_topic,name = 'new'),
     path('<slug:slug>',views.specificCategory,name='specific'),
-    path('<slug:slug>',views.specificCategory,name='specific'),
     path('<slug:slug>/<int:id>', views.specificArticle,name='specificarticel'),
+    path('home/<slug:slug>',views.specificCategory,name='specific'),
+    path('home/<slug:slug>/<int:id>', views.specificArticle,name='specificarticel'),
     path('help',views.help,name ='help'),
     ]
