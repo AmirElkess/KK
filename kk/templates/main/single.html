@@ -43,7 +43,7 @@
 {% if user.is_authenticated %}
 <form method="post" novalidate style="background-color:aliceblue ; padding: 20px ; padding-bottom:50px">
     {% csrf_token %}
-    {% render_field form.Body class="" style="background-color:red;" %}
+    {% render_field form.Body class="form-control"%}
     <button type="submit" class="btn btn-success">Add Comment</button>
 </form>
 {% else %}
