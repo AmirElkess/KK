@@ -10,7 +10,7 @@
     <p class="lead">{{topic.Body}}</p>
 
     <ul style="list-style:none ; margin: 0px; padding: 0px">
-        <li style="display:inline-block; padding-right: 20px"><h4>Topic : <a class="btn btn-secondary btn-sm" href={{topic.Category}} role="button">{{topic.Category}}</a></h4></li>
+        <li style="display:inline-block; padding-right: 20px"><h4>Topic : <a class="btn btn-secondary btn-sm" href='{{topic.Category}}' role="button">{{topic.Category}}</a></h4></li>
         <li style="display:inline-block"><h4>Author : <a class="btn btn-secondary btn-sm" href={{topic.Author}} role="button">{{topic.Author}}</a></h4></li>
     </ul>
 
@@ -41,10 +41,10 @@
 <br />
 
 {% if user.is_authenticated %}
-<form method="post" novalidate style="background-color:aliceblue ; padding: 20px ; padding-bottom:50px">
+<form method="post" novalidate style="background-color:aliceblue ; padding: 20px ; padding-bottom:50px; padding-bottom: 60px; margin-bottom: 10px;">
     {% csrf_token %}
     {% render_field form.Body class="form-control"%}
-    <button type="submit" class="btn btn-success">Add Comment</button>
+    <button type="submit" class="btn btn-success pull-right">Add Comment</button>
 </form>
 {% else %}
 <div style="padding-bottom: 50px ; background-color:aliceblue; padding: 20px">

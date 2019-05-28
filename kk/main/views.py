@@ -37,7 +37,7 @@ def specificCategory(request,slug):
     return render(request, 'main/home.html',context=data)
 
 def specificArticle(request, slug,id):
-    user = User.objects.first()  
+    user = get_user(request)  
     cat= slug
     ID = id
     topic = get_object_or_404(Topic,id = id) 

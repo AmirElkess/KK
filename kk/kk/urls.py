@@ -21,7 +21,7 @@ from accounts import views as accounts_views
 
 
 urlpatterns = [
-    path('main/', include('main.urls')),
+    path('main/', include('main.urls'),name = 'home'),
     path('signup/', accounts_views.signup, name = 'signup'),
     url('admin/', admin.site.urls),
     path('logout/',auth_views.LogoutView.as_view(), name='logout'),

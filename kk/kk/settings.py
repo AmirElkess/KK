@@ -30,7 +30,7 @@ DEBUG = True
 #                  '127.0.0.1',
 #                  '172.29.160.1']
 
-ALLOWED_HOSTS = ['10.2.146.184',]
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
